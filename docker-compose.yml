@@ -1,0 +1,36 @@
+services:
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  order.api:
+    image: ${DOCKER_REGISTRY-}orderapi
+    build:
+      context: .
+      dockerfile: Order.API/Dockerfile
+    ports:
+      - "8085:8080"
+    depends_on:
+      - rabbitmq
+
+  inventory.api:
+    image: ${DOCKER_REGISTRY-}inventoryapi
+    build:
+      context: .
+      dockerfile: Inventory.API/Dockerfile
+    ports:
+      - "8086:8080"
+    depends_on:
+      - rabbitmq
+
+  email.worker:
+    image: ${DOCKER_REGISTRY-}emailworker
+    build:
+      context: .
+      dockerfile: Email.Worker/Dockerfile
+    depends_on:
+      - rabbitmq

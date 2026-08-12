@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
+  <Project Path="Email.Worker/Email.Worker.csproj" />
+  <Project Path="Inventory.API/Inventory.API.csproj" />
+  <Project Path="Order.API/Order.API.csproj" />
+  <Project Path="Shared.Contracts/Shared.Contracts.csproj" />
+</Solution>
