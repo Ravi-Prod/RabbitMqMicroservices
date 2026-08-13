@@ -38,7 +38,8 @@ jobs:
         run: |
           docker build \
             -t ${{ env.ACR_LOGIN_SERVER }}/order-api:${{ github.sha }} \
-            ./Order.API
+            -f Order.API/Dockerfile \
+	     .		
 
       - name: Push Docker image
         run: |
